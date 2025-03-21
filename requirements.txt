@@ -53,7 +53,7 @@ multidict==6.2.0
 mypy-extensions==1.0.0
 networkx==3.2.1
 nltk==3.9.1
-numpy==2.0.2
+numpy
 ollama==0.4.7
 openai==1.68.0
 orjson==3.10.15
