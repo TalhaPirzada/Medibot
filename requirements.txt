@@ -55,7 +55,7 @@ networkx==3.2.1
 nltk==3.9.1
 numpy
 ollama==0.4.7
-openai==1.68.0
+# openai==1.68.0
 orjson==3.10.15
 packaging==24.2
 pillow==11.1.0
