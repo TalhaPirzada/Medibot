@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from src.helper import download_embeddings
 from langchain_ollama.llms import OllamaLLM
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_pinecone import PineconeVectorStore
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -14,7 +15,7 @@ app = Flask(__name__)
 load_dotenv()
 
 PINECONE_API_KEY=os.environ.get('PINECONE_API_KEY')
-OPENAI_API_KEY=os.environ.get('OPENAI_API_KEY')
+GOOGLE_API_KEY=os.environ.get('GOOGLE_API_KEY')
 
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 
@@ -32,7 +33,7 @@ docsearch = PineconeVectorStore.from_existing_index(
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
 
 
-llm = OllamaLLM(model="llama2")
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro",temperature=0,)
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", system_prompt),
