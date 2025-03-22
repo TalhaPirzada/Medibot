@@ -122,7 +122,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.venv
 .env
+venv/
 env/
 Generative_AI_Project.egg-info/
 ENV/
